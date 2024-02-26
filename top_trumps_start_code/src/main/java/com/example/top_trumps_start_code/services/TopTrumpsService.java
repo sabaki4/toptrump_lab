@@ -16,8 +16,16 @@ public class TopTrumpsService {
     public TopTrumpsService() {
     }
 
-    public void checkWinner(){
+    public String checkWinner(){
+        if(this.cards.get(0).getCardValue() == this.cards.get(1).getCardValue()){
+            return "DRAW";
+        }
 
+        if(this.cards.get(0).getCardValue() > this.cards.get(1).getCardValue()){
+            return this.cards.get(0).getRank() + " of " + this.cards.get(0).getSuit() + " wins!";
+        }else{
+            return this.cards.get(1).getRank() + " of " + this.cards.get(1).getSuit() + " wins!";
+        }
     }
 
     public ArrayList<Card> getCards() {
