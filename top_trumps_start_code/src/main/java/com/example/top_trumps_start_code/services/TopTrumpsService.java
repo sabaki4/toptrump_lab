@@ -17,7 +17,7 @@ public class TopTrumpsService {
     }
 
     public void checkWinner(){
-        
+
     }
 
     public ArrayList<Card> getCards() {
