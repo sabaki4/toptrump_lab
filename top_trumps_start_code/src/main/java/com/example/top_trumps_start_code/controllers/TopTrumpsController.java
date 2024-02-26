@@ -16,10 +16,17 @@ public class TopTrumpsController {
     @Autowired
     TopTrumpsService topTrumpsService;
 
+    @GetMapping
+    public ResponseEntity<String> startNewGame(){
+        topTrumpsService.setDecks();
+        topTrumpsService.showDeck();
+        return new ResponseEntity<>("New Game - Deck created", HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<String> processCard(@RequestBody ArrayList<Card> cards){
-        topTrumpsService = new TopTrumpsService(cards);
-        String result = topTrumpsService.checkWinner();
+        String result = topTrumpsService.checkWinner(cards);
+//        String result = topTrumpsService.processRound(cards); EXTENSION
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
